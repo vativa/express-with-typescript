@@ -1,0 +1,19 @@
+{
+    "name": "express-with-typescript",
+    "version": "1.0.1",
+    "description": "TypeScript decorators for Express.js library'",
+    "main": "src/index.ts",
+    "repository": "git@github.com:vativa/express-with-typescript.git",
+    "author": "Tichomir Rangelov <vativa4c@gmail.com>",
+    "license": "MIT",
+    "private": false,
+    "scripts": {
+        "start:build": "tsc -w",
+        "start:run": "nodemon build/index.js",
+        "start": "concurrently npm:start:*"
+    },
+    "devDependencies": {
+        "concurrently": "5.0.2",
+        "nodemon": "2.0.2"
+    }
+}
