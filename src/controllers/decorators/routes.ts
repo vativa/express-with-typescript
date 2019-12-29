@@ -1,10 +1,15 @@
 import 'reflect-metadata';
-import { Methods } from './Methods';
+import { RequestHandler } from 'express';
 import { MetadataKeys } from './MethadataKeys';
+import { Methods } from './Methods';
 
-function routeBinder(method: string): Function {
-    return function get(path: string): Function {
-        return function (target: any, key: string, desc: PropertyDescriptor): void {
+interface RouteHandlerDescriptor extends PropertyDescriptor {
+    value?: RequestHandler;
+}
+
+function routeBinder(method: string) {
+    return function(path: string) {
+        return function (target: any, key: string, desc: RouteHandlerDescriptor): void {
             Reflect.defineMetadata(MetadataKeys.PATH, path, target, key);
             Reflect.defineMetadata(MetadataKeys.METHOD, method, target, key);
         }
